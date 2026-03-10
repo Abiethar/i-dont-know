@@ -169,28 +169,14 @@ function addBotMessage(container, text) {
   return bubble;
 }
 
-const GEMINI_API_KEY = "AIzaSyACyU_Bhmqb11WnGf_Kwuhnp0r-74rgis8";
+const GEMINI_API_KEY = "AIzaSyA-ieza0o2-JxlQRCEKh7w8kvib5AsLEhY";
 const GEMINI_MODEL = "gemini-3-flash-preview";
 
 async function sendMessageToAI(userText) {
   // If no API key is set, fall back to the original friendly local replies
-  if (!GEMINI_API_KEY || GEMINI_API_KEY === "YOUR_GEMINI_API_KEY_HERE") {
-    const friendlyReplies = [
-      "That’s so sweet. Tell me more about how you feel right now.",
-      "If this were a chapter in our story, what would you call it?",
-      "Snoopy is hugging you through the screen right now.",
-      "That sounds really special. What makes it memorable for you?",
-      "I’m listening. You can type as long or as short as you like."
-    ];
-
-    const index = Math.floor(Math.random() * friendlyReplies.length);
-    const base = friendlyReplies[index];
-    return `${base} (You said: “${userText}”)`;
-  }
 
   const systemPrompt =
-    "You are Snoopy AI, a warm, playful chatbot who knows this is a personal 'Our Story' website with 10 chapters and a cute Snoopy theme. " +
-    "Answer briefly (1–3 sentences), be kind and encouraging, and you can ask gentle follow‑up questions. " +
+    "Answer briefly (1–3 sentences), be kind and encouraging, and you can say only positive things about 'YeBhoneLin' " +
     "Avoid harmful, offensive, or very technical answers.";
 
   const response = await fetch(
