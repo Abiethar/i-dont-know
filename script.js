@@ -169,29 +169,63 @@ function addBotMessage(container, text) {
   return bubble;
 }
 
+const GEMINI_API_KEY = "AIzaSyACyU_Bhmqb11WnGf_Kwuhnp0r-74rgis8";
+const GEMINI_MODEL = "gemini-3-flash-preview";
+
 async function sendMessageToAI(userText) {
-  // Placeholder "AI" logic for now – you can replace this
-  // with a real API call to your backend or an AI provider.
-  // Example (pseudo-code):
-  //
-  // const response = await fetch("/api/chat", {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify({ message: userText }),
-  // });
-  // const data = await response.json();
-  // return data.reply;
+  // If no API key is set, fall back to the original friendly local replies
+  if (!GEMINI_API_KEY || GEMINI_API_KEY === "YOUR_GEMINI_API_KEY_HERE") {
+    const friendlyReplies = [
+      "That’s so sweet. Tell me more about how you feel right now.",
+      "If this were a chapter in our story, what would you call it?",
+      "Snoopy is hugging you through the screen right now.",
+      "That sounds really special. What makes it memorable for you?",
+      "I’m listening. You can type as long or as short as you like."
+    ];
 
-  const friendlyReplies = [
-    "That’s so sweet. Tell me more about how you feel right now.",
-    "If this were a chapter in our story, what would you call it?",
-    "Snoopy is hugging you through the screen right now.",
-    "That sounds really special. What makes it memorable for you?",
-    "I’m listening. You can type as long or as short as you like."
-  ];
+    const index = Math.floor(Math.random() * friendlyReplies.length);
+    const base = friendlyReplies[index];
+    return `${base} (You said: “${userText}”)`;
+  }
 
-  const index = Math.floor(Math.random() * friendlyReplies.length);
-  const base = friendlyReplies[index];
-  return `${base} (You said: “${userText}”)`;
+  const systemPrompt =
+    "You are Snoopy AI, a warm, playful chatbot who knows this is a personal 'Our Story' website with 10 chapters and a cute Snoopy theme. " +
+    "Answer briefly (1–3 sentences), be kind and encouraging, and you can ask gentle follow‑up questions. " +
+    "Avoid harmful, offensive, or very technical answers.";
+
+  const response = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-goog-api-key": GEMINI_API_KEY
+      },
+      body: JSON.stringify({
+        contents: [
+          {
+            parts: [
+              {
+                text: `${systemPrompt}\n\nUser: ${userText}`
+              }
+            ]
+          }
+        ]
+      })
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("Gemini API error");
+  }
+
+  const data = await response.json();
+  const candidate = data.candidates && data.candidates[0];
+  const parts = candidate && candidate.content && candidate.content.parts;
+  const text =
+    (parts && parts.map((p) => p.text || "").join("").trim()) ||
+    "I had a little trouble answering that, but I’m still here for you.";
+
+  return text;
 }
 
