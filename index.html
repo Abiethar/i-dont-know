@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Our Story - Chapters</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-bg"></div>
+    <div class="page-overlay"></div>
+
+    <main class="page-wrapper fade-enter" data-page="page1">
+      <section class="card" aria-labelledby="our-story-title">
+        <h1 id="our-story-title">Our Story</h1>
+        <p class="subtext">
+          Ten tiny <span class="highlight">chapters</span> of us, wrapped in Snoopy hugs.
+        </p>
+
+        <div class="chapters-strip" aria-label="Chapters">
+          <article class="chapter-card">
+            <div class="chapter-photo chapter-photo--custom">
+              <img src="chapter_1.png" alt="Chapter 1 memory photo" />
+            </div>
+            <div class="chapter-label">Chapter 1</div>
+          </article>
+          <article class="chapter-card">
+            <div class="chapter-photo chapter-photo--custom">
+              <img src="chapter_2.png" alt="Chapter 2 memory photo" />
+            </div>
+            <div class="chapter-label">Chapter 2</div>
+          </article>
+          <article class="chapter-card">
+            <div class="chapter-photo chapter-photo--custom">
+              <img src="chapter_3.png" alt="Chapter 3 memory photo" />
+            </div>
+            <div class="chapter-label">Chapter 3</div>
+          </article>
+          <article class="chapter-card">
+            <div class="chapter-photo chapter-photo--custom">
+              <img src="chapter_4.png" alt="Chapter 4 memory photo" />
+            </div>
+            <div class="chapter-label">Chapter 4</div>
+          </article>
+          <article class="chapter-card">
+            <div class="chapter-photo chapter-photo--custom">
+              <img src="chapter_5.png" alt="Chapter 5 memory photo" />
+            </div>
+            <div class="chapter-label">Chapter 5</div>
+          </article>
+          <article class="chapter-card">
+            <div class="chapter-photo chapter-photo--custom">
+              <img src="chapter_6.png" alt="Chapter 6 memory photo" />
+            </div>
+            <div class="chapter-label">Chapter 6</div>
+          </article>
+          <article class="chapter-card">
+            <div class="chapter-photo chapter-photo--custom">
+              <img src="chapter_7.png" alt="Chapter 7 memory photo" />
+            </div>
+            <div class="chapter-label">Chapter 7</div>
+          </article>
+          <article class="chapter-card">
+            <div class="chapter-photo chapter-photo--custom">
+              <img src="chapter_8.png" alt="Chapter 8 memory photo" />
+            </div>
+            <div class="chapter-label">Chapter 8</div>
+          </article>
+          <article class="chapter-card">
+            <div class="chapter-photo chapter-photo--custom">
+              <img src="chapter_9.png" alt="Chapter 9 memory photo" />
+            </div>
+            <div class="chapter-label">Chapter 9</div>
+          </article>
+          <article class="chapter-card">
+            <div class="chapter-photo chapter-photo--custom">
+              <img src="chapter_10.png" alt="Chapter 10 memory photo" />
+            </div>
+            <div class="chapter-label">Chapter 10</div>
+          </article>
+        </div>
+
+        <p class="note">You can replace this with your own video later.</p>
+        <div class="video-wrapper">
+          <video controls preload="metadata">
+            <source src="/Users/yebhonelin/Documents/github/i-dont-know/v2.mov" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div class="buttons-row">
+          <button class="btn btn-secondary" data-nav="page2" type="button">
+            Next &nbsp;➜
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <div class="chatbot" aria-live="polite">
+      <button class="chatbot-toggle" type="button" aria-label="Chat with Snoopy AI">
+        💬
+      </button>
+      <div class="chatbot-window" hidden>
+        <header class="chatbot-header">
+          <div class="chatbot-avatar">
+            <img src="snoopy.gif" alt="Snoopy AI avatar" />
+          </div>
+          <div class="chatbot-title-group">
+            <h3 class="chatbot-title">Snoopy AI</h3>
+            <p class="chatbot-subtitle">Ask anything about our story ✨</p>
+          </div>
+        </header>
+        <div class="chatbot-messages" id="chatbot-messages"></div>
+        <form class="chatbot-input-area" autocomplete="off">
+          <input
+            id="chatbot-input"
+            type="text"
+            name="message"
+            placeholder="Type a message..."
+            aria-label="Type a message to Snoopy AI"
+            required
+          />
+          <button class="btn btn-chat-send" type="submit">Send</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+  </html>
+

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Snoopy Question</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-bg"></div>
+    <div class="page-overlay"></div>
+
+    <main class="page-wrapper fade-enter" data-page="page2">
+      <section class="card card-small" aria-live="polite">
+        <div class="snoopy-hero">
+          <img src="source.gif" alt="Snoopy in space" />
+        </div>
+
+        <h2>Do you want to open this?</h2>
+
+        <p class="subtext">Snoopy is very excited to know your answer.</p>
+
+        <div class="buttons-row" id="question-buttons">
+          <button class="btn" id="yes-btn" type="button">Yes</button>
+          <button class="btn btn-ghost" id="no-btn" type="button">No</button>
+        </div>
+
+        <p class="subtext" id="extra-message" hidden></p>
+
+        <div class="snoopy-crying" id="crying-wrapper" hidden>
+          <img
+            src="https://media.tenor.com/OQxG7kT6ChUAAAAi/snoopy-sad.gif"
+            alt="Crying Snoopy"
+          />
+        </div>
+      </section>
+    </main>
+
+    <div class="chatbot" aria-live="polite">
+      <button class="chatbot-toggle" type="button" aria-label="Chat with Snoopy AI">
+        💬
+      </button>
+      <div class="chatbot-window" hidden>
+        <header class="chatbot-header">
+          <div class="chatbot-avatar">
+            <img src="snoopy.gif" alt="Snoopy AI avatar" />
+          </div>
+          <div class="chatbot-title-group">
+            <h3 class="chatbot-title">Snoopy AI</h3>
+            <p class="chatbot-subtitle">Ask your questions here</p>
+          </div>
+        </header>
+        <div class="chatbot-messages" id="chatbot-messages"></div>
+        <form class="chatbot-input-area" autocomplete="off">
+          <input
+            id="chatbot-input"
+            type="text"
+            name="message"
+            placeholder="Type a message..."
+            aria-label="Type a message to Snoopy AI"
+            required
+          />
+          <button class="btn btn-chat-send" type="submit">Send</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+  </html>
+
